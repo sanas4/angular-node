@@ -1,0 +1,37 @@
+<div class="card o-hidden">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="p-4">
+        <h1 class="mb-3 text-18 text-center">Sign In</h1>
+        <form [formGroup]="loginForm" (ngSubmit)="checkLogIn(loginForm)">
+          <div class="form-group">
+            <label>Email:</label>
+            <input id="email" class="form-control" formControlName="email"
+                   [ngClass]="{'is-invalid': submitted && loginForm.controls.email.errors}">
+            <div class="invalid-feedback" *ngIf="submitted && loginForm.controls.email.errors">
+              Enter email.
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Password:</label>
+            <div class="input-group">
+              <input id="password" class="form-control" formControlName="password" type="password"
+                     [ngClass]="{'is-invalid': submitted && loginForm.controls.password.errors}">
+              <div class="invalid-feedback" *ngIf="submitted && loginForm.controls.password.errors">
+                Enter password.
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
+

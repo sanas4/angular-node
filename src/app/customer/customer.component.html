@@ -1,0 +1,31 @@
+<div class="col-md-12">
+  <table style="width: 50%">
+    <thead>
+    <tr>
+      <th>NAME</th>
+      <th>PHONE NO</th>
+      <th class="nosort">ACTION</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let customer of data">
+      <td class="text-capitalize">{{customer?.name}}</td>
+      <td>{{customer?.phone}}</td>
+      <td colspan="3">
+        <button class="btn btn-sm btn-primary" [routerLink]="['/editCustomer',customer._id ]">
+          EDIT
+        </button>&nbsp;
+        <button class="btn btn-sm btn-danger" (click)="deleteCustomer(customer?._id)">
+          DELETE
+        </button>&nbsp;
+      </td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr *ngIf="data == null">
+      <td colspan="10" class="text-center">sEmptyTable</td>
+    </tr>
+    </tfoot>
+  </table>
+  <button [routerLink]="['/addCustomer']">Add Customer</button>
+</div>

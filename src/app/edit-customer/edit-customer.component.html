@@ -1,0 +1,47 @@
+<div class="card o-hidden">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="p-4">
+        <h1 class="mb-3 text-18 text-center">Sign In</h1>
+        <form [formGroup]="customerEdit" (ngSubmit)="editCustomer(customerEdit)">
+          <div class="form-group">
+            <label>Name:</label>
+            <input id="name" class="form-control" formControlName="name" [ngModel]="data?.name"
+                   [ngClass]="{'is-invalid': submitted &&  customerEdit.controls.name.errors}">
+            <div class="invalid-feedback" *ngIf="submitted &&  customerEdit.controls.name.errors">
+              Enter name.
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Phone No:</label>
+            <div class="input-group">
+              <input id="phone" class="form-control" formControlName="phone" type="text" [ngModel]="data?.phone"
+                     [ngClass]="{'is-invalid': submitted &&  customerEdit.controls.phone.errors}">
+              <div class="invalid-feedback" *ngIf="submitted &&  customerEdit.controls.phone.errors">
+                Enter Phone No.
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Is GOlD:</label>
+            <div class="input-group">
+              <input type="radio" formControlName="isGold" [value]="true">True
+              <input type="radio" formControlName="isGold" [value]="false">False
+              <div class="invalid-feedback" *ngIf="submitted &&  customerEdit.controls.isGold.errors">
+                Enter IsGOLD.
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
+
