@@ -27,11 +27,13 @@ export class LoginComponent implements OnInit {
   checkLogIn(form: FormGroup) {
     this.submitted = true;
     this.http.post('http://localhost:3000/api/auth', form.value, {
-      responseType: 'string'
+      responseType: 'json'
     })
       .subscribe(data => {
           console.log('data', data);
-          localStorage.setItem('token', data);
+          console.log('token', data['token']);
+          let token = data['token'];
+          localStorage.setItem('token', token);
           this.router.navigate(['customer']);
         },
         error => {
